@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree JI AirCon - Sales & Service</title>
+    
+    <!-- Tailwind CSS for Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-blue-700 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer" onclick="switchTab('home')">
+                <div class="bg-white p-1.5 rounded-full">
+                    <i data-lucide="wind" class="text-blue-700 w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold leading-none" id="nav-brand">श्री जी एयरकॉन</h1>
+                    <p class="text-xs text-blue-200 hidden md:block">Sales & Service</p>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <button onclick="switchTab('home')" class="hover:text-blue-200 transition font-bold" id="nav-home">होम</button>
+                <button onclick="switchTab('products')" class="hover:text-blue-200 transition" id="nav-products">प्रोडक्ट्स</button>
+                <button onclick="switchTab('inquiry')" class="hover:text-blue-200 transition" id="nav-inquiry">पूछताछ</button>
+                
+                <button onclick="toggleLanguage()" class="flex items-center gap-1 bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded-full text-sm border border-blue-600 transition">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span id="lang-btn-text">English</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center gap-4">
+                <button onclick="toggleLanguage()" class="text-sm bg-blue-800 px-2 py-1 rounded" id="mobile-lang-btn">EN</button>
+                <button onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-800 border-t border-blue-700">
+            <div class="flex flex-col p-4 gap-4">
+                <button onclick="switchTab('home'); toggleMobileMenu()" class="text-left py-2 border-b border-blue-700" id="mob-home">होम</button>
+                <button onclick="switchTab('products'); toggleMobileMenu()" class="text-left py-2 border-b border-blue-700" id="mob-products">प्रोडक्ट्स</button>
+                <button onclick="switchTab('inquiry'); toggleMobileMenu()" class="text-left py-2" id="mob-inquiry">पूछताछ</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        
+        <!-- HOME PAGE -->
+        <div id="home" class="tab-content active">
+            <!-- Hero Section -->
+            <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16 md:py-24 px-4 text-center relative overflow-hidden">
+                <div class="container mx-auto relative z-10">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4 leading-tight" id="hero-title">गर्मी हो या सर्दी, आराम हमेशा!</h2>
+                    <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto" id="hero-subtitle">एयर कंडीशनर, कूलर और इलेक्ट्रॉनिक उपकरणों के लिए भीलवाड़ा की भरोसेमंद दुकान।</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button onclick="switchTab('products')" class="bg-white text-blue-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition transform" id="hero-btn-products">
+                            प्रोडक्ट्स देखें
+                        </button>
+                        <a href="tel:919610747195" class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white/10 transition flex items-center justify-center gap-2">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            <span id="hero-btn-call">अभी कॉल करें</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <section class="py-12 px-4 container mx-auto">
+                <h3 class="text-2xl font-bold text-center mb-8 text-gray-800 border-b-2 border-blue-200 pb-2 inline-block mx-auto" id="cat-title">हम क्या बेचते हैं</h3>
+                <!-- Changed grid to flex-wrap to center the 5 items nicely -->
+                <div class="flex flex-wrap justify-center gap-4 text-center">
+                    <div onclick="switchTab('products')" class="w-40 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:bg-blue-50 cursor-pointer transition transform hover:-translate-y-1">
+                        <i data-lucide="wind" class="text-blue-600 w-8 h-8 mx-auto mb-2"></i>
+                        <span class="font-semibold text-gray-700" id="cat-ac">एसी</span>
+                    </div>
+                    <div onclick="switchTab('products')" class="w-40 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:bg-blue-50 cursor-pointer transition transform hover:-translate-y-1">
+                        <i data-lucide="thermometer" class="text-blue-600 w-8 h-8 mx-auto mb-2"></i>
+                        <span class="font-semibold text-gray-700" id="cat-cooler">कूलर</span>
+                    </div>
+                    <div onclick="switchTab('products')" class="w-40 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:bg-blue-50 cursor-pointer transition transform hover:-translate-y-1">
+                        <i data-lucide="zap" class="text-blue-600 w-8 h-8 mx-auto mb-2"></i>
+                        <span class="font-semibold text-gray-700" id="cat-heater">हीटर</span>
+                    </div>
+                    <div onclick="switchTab('products')" class="w-40 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:bg-blue-50 cursor-pointer transition transform hover:-translate-y-1">
+                        <i data-lucide="home" class="text-blue-600 w-8 h-8 mx-auto mb-2"></i>
+                        <span class="font-semibold text-gray-700" id="cat-geyser">गीजर</span>
+                    </div>
+                    <!-- Added Fan Category -->
+                    <div onclick="switchTab('products')" class="w-40 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:bg-blue-50 cursor-pointer transition transform hover:-translate-y-1">
+                        <i data-lucide="fan" class="text-blue-600 w-8 h-8 mx-auto mb-2"></i>
+                        <span class="font-semibold text-gray-700" id="cat-fan">पंखे</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PRODUCTS PAGE -->
+        <div id="products" class="tab-content">
+            <div class="container mx-auto px-4 py-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800" id="prod-page-title">प्रोडक्ट्स</h2>
+                
+                <!-- Product Grid (Populated by JS) -->
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Javascript will insert products here -->
+                </div>
+
+                <div class="mt-12 text-center bg-yellow-50 p-6 rounded-xl border border-yellow-200">
+                    <p class="text-lg text-yellow-800 font-medium mb-4" id="prod-custom-text">क्या आपको कुछ विशेष चाहिए?</p>
+                    <button onclick="switchTab('inquiry')" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-lg shadow transition" id="prod-inquiry-btn">
+                        पूछताछ करें
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- INQUIRY PAGE -->
+        <div id="inquiry" class="tab-content">
+            <div class="container mx-auto px-4 py-8 max-w-2xl">
+                <h2 class="text-3xl font-bold text-center mb-2 text-gray-800" id="inq-title">पूछताछ करें</h2>
+                <p class="text-center text-gray-600 mb-8" id="inq-desc">नीचे दिया गया फॉर्म भरें और हम आपको व्हाट्सएप पर जवाब देंगे।</p>
+
+                <form onsubmit="handleInquiry(event)" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-semibold mb-2" id="lbl-name">आपका नाम</label>
+                        <input type="text" id="form-name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 outline-none">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-semibold mb-2" id="lbl-phone">मोबाइल नंबर</label>
+                        <input type="tel" id="form-phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 outline-none">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-semibold mb-2" id="lbl-prod">किस प्रोडक्ट में रुचि है?</label>
+                        <select id="form-product" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 outline-none bg-white">
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Split AC">Split AC</option>
+                            <option value="Window AC">Window AC</option>
+                            <option value="Air Cooler">Air Cooler</option>
+                            <option value="Geyser">Geyser</option>
+                            <option value="Heater">Heater</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-semibold mb-2" id="lbl-msg">संदेश</label>
+                        <textarea id="form-message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 outline-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 transition hover:scale-105">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span id="btn-submit">व्हाट्सएप पर भेजें</span>
+                    </button>
+                </form>
+
+                <!-- Map Section -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-center mb-6 text-gray-800" id="loc-title">हमारी दुकान की लोकेशन</h3>
+                    <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200 h-64 md:h-80 w-full bg-gray-100">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            style="border:0" 
+                            src="https://maps.google.com/maps?q=Shop%20no%203%2C%20Kiran%20market%2C%20100%20feet%20road%2C%20Bhilwara%2C%20Rajasthan&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="https://maps.app.goo.gl/mgA3kyFsBiaYCFHH9" target="_blank" class="text-blue-600 font-semibold hover:underline flex items-center justify-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            <span id="loc-btn">गूगल मैप्स पर देखें</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-auto">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h2 class="text-2xl font-bold mb-4 flex items-center justify-center md:justify-start gap-2">
+                    <i data-lucide="wind" class="text-blue-400"></i> <span id="foot-brand">श्री जी एयरकॉन</span>
+                </h2>
+                <p class="text-gray-400 text-sm leading-relaxed" id="foot-desc">एयर कंडीशनर, कूलर और इलेक्ट्रॉनिक उपकरणों के लिए भीलवाड़ा की भरोसेमंद दुकान।</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-blue-400" id="foot-contact">संपर्क करें</h3>
+                <div class="flex flex-col gap-3 text-sm text-gray-300 items-center md:items-start">
+                    <a href="tel:919610747195" class="flex items-center gap-2 hover:text-white transition">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +91 96107 47195
+                    </a>
+                    <p class="flex items-center gap-2 hover:text-white transition">
+                        <i data-lucide="mail" class="w-4 h-4"></i> contact@shreejiaircon.com
+                    </p>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-blue-400" id="foot-address">हमारा पता</h3>
+                <div class="flex items-start gap-2 text-sm text-gray-300 justify-center md:justify-start">
+                    <i data-lucide="map-pin" class="w-5 h-5 flex-shrink-0 mt-1"></i>
+                    <p id="shop-addr">दुकान नंबर 3, किरण मार्केट, 100 फीट रोड, भीलवाड़ा, राजस्थान</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-600 text-xs mt-12 pt-8 border-t border-gray-700" id="copyright">
+            © 2024 श्री जी एयरकॉन. सर्वाधिकार सुरक्षित।
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // State
+        let currentLang = 'hi';
+        const whatsappNumber = '919610747195';
+
+        // Translations Data
+        const translations = {
+            hi: {
+                brand: 'श्री जी एयरकॉन',
+                home: 'होम',
+                products: 'प्रोडक्ट्स',
+                inquiry: 'पूछताछ',
+                heroTitle: 'गर्मी हो या सर्दी, आराम हमेशा!',
+                heroSubtitle: 'एयर कंडीशनर, कूलर और इलेक्ट्रॉनिक उपकरणों के लिए भीलवाड़ा की भरोसेमंद दुकान।',
+                heroBtnProducts: 'प्रोडक्ट्स देखें',
+                heroBtnCall: 'अभी कॉल करें',
+                catTitle: 'हम क्या बेचते हैं',
+                catAc: 'एसी',
+                catCooler: 'कूलर',
+                catHeater: 'हीटर',
+                catGeyser: 'गीजर',
+                catFan: 'पंखे',
+                prodPageTitle: 'हमारे मुख्य प्रोडक्ट्स',
+                prodCustomText: 'क्या आपको कुछ विशेष चाहिए?',
+                prodInquiryBtn: 'पूछताछ करें',
+                inqTitle: 'पूछताछ करें',
+                inqDesc: 'नीचे दिया गया फॉर्म भरें और हम आपको व्हाट्सएप पर जवाब देंगे।',
+                lblName: 'आपका नाम',
+                lblPhone: 'मोबाइल नंबर',
+                lblProd: 'किस प्रोडक्ट में रुचि है?',
+                lblMsg: 'संदेश',
+                btnSubmit: 'व्हाट्सएप पर भेजें',
+                locTitle: 'हमारी दुकान की लोकेशन',
+                locBtn: 'गूगल मैप्स पर देखें',
+                footContact: 'संपर्क करें',
+                footAddress: 'हमारा पता',
+                shopAddr: 'दुकान नंबर 3, किरण मार्केट, 100 फीट रोड, भीलवाड़ा, राजस्थान',
+                copyright: '© 2024 श्री जी एयरकॉन. सर्वाधिकार सुरक्षित।',
+                askWhatsapp: 'व्हाट्सएप पर पूछें',
+                langBtn: 'English',
+                startsAt: 'शुरू'
+            },
+            en: {
+                brand: 'Shree JI AirCon',
+                home: 'Home',
+                products: 'Products',
+                inquiry: 'Inquiry',
+                heroTitle: 'Comfort in Every Season!',
+                heroSubtitle: 'Bhilwara\'s trusted shop for Air Conditioners, Coolers, and Electronics.',
+                heroBtnProducts: 'View Products',
+                heroBtnCall: 'Call Now',
+                catTitle: 'What We Sell',
+                catAc: 'ACs',
+                catCooler: 'Coolers',
+                catHeater: 'Heaters',
+                catGeyser: 'Geysers',
+                catFan: 'Fans',
+                prodPageTitle: 'Our Featured Products',
+                prodCustomText: 'Looking for something specific?',
+                prodInquiryBtn: 'Send Inquiry',
+                inqTitle: 'Send Inquiry',
+                inqDesc: 'Fill the form below and we will reply to you on WhatsApp.',
+                lblName: 'Your Name',
+                lblPhone: 'Mobile Number',
+                lblProd: 'Interested Product?',
+                lblMsg: 'Message',
+                btnSubmit: 'Send on WhatsApp',
+                locTitle: 'Our Shop Location',
+                locBtn: 'View on Google Maps',
+                footContact: 'Contact Us',
+                footAddress: 'Our Address',
+                shopAddr: 'Shop no 3, Kiran market, 100 feet road, Bhilwara, Rajasthan',
+                copyright: '© 2024 Shree JI AirCon. All rights reserved.',
+                askWhatsapp: 'Ask on WhatsApp',
+                langBtn: 'हिंदी',
+                startsAt: 'Starts at'
+            }
+        };
+
+        // Product Data
+        const products = [
+            { id: 1, category: 'AC', img: 'https://placehold.co/400x300/e2e8f0/1e293b?text=Split+AC', nameHi: 'स्प्लिट एसी (1.5 टन)', nameEn: 'Split AC (1.5 Ton)', priceHi: '₹35,000 से शुरू', priceEn: 'Starts at ₹35,000', descHi: 'बेहतरीन कूलिंग और ऊर्जा की बचत।', descEn: 'Superior cooling and energy saving.' },
+            { id: 2, category: 'Cooler', img: 'https://placehold.co/400x300/e2e8f0/1e293b?text=Air+Cooler', nameHi: 'डेजर्ट एयर कूलर', nameEn: 'Desert Air Cooler', priceHi: '₹8,500 से शुरू', priceEn: 'Starts at ₹8,500', descHi: 'बड़े कमरों के लिए शक्तिशाली हवा।', descEn: 'Powerful air flow for large rooms.' },
+            { id: 3, category: 'Heater', img: 'https://placehold.co/400x300/e2e8f0/1e293b?text=Room+Heater', nameHi: 'रूम हीटर (फैन)', nameEn: 'Room Heater (Fan)', priceHi: '₹1,200 से शुरू', priceEn: 'Starts at ₹1,200', descHi: 'सर्दियों में तुरंत गर्मी के लिए।', descEn: 'Instant heat for winters.' },
+            { id: 4, category: 'Geyser', img: 'https://placehold.co/400x300/e2e8f0/1e293b?text=Geyser', nameHi: 'इलेक्ट्रिक गीजर (15L)', nameEn: 'Electric Geyser (15L)', priceHi: '₹4,500 से शुरू', priceEn: 'Starts at ₹4,500', descHi: 'गर्म पानी, सुरक्षा सुविधाओं के साथ।', descEn: 'Hot water with safety features.' },
+            { id: 5, category: 'Fan', img: 'https://placehold.co/400x300/e2e8f0/1e293b?text=Ceiling+Fan', nameHi: 'सीलिंग फैन (हाई स्पीड)', nameEn: 'Ceiling Fan (High Speed)', priceHi: '₹1,500 से शुरू', priceEn: 'Starts at ₹1,500', descHi: 'कम शोर और तेज हवा।', descEn: 'Low noise and high speed air.' },
+            { id: 6, category: 'AC', img: 'https://placehold.co/400x300/e2e8f0/1e293b?text=Window+AC', nameHi: 'विंडो एसी (1.5 टन)', nameEn: 'Window AC (1.5 Ton)', priceHi: '₹28,000 से शुरू', priceEn: 'Starts at ₹28,000', descHi: 'किफायती और टिकाऊ।', descEn: 'Economical and durable.' }
+        ];
+
+        // Functions
+        function switchTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Show selected
+            document.getElementById(tabId).classList.add('active');
+            
+            // Update Nav styles
+            document.getElementById('nav-home').classList.remove('underline', 'underline-offset-4');
+            document.getElementById('nav-products').classList.remove('underline', 'underline-offset-4');
+            document.getElementById('nav-inquiry').classList.remove('underline', 'underline-offset-4');
+            
+            document.getElementById('nav-' + tabId).classList.add('underline', 'underline-offset-4');
+            
+            // Scroll to top
+            window.scrollTo(0,0);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            updateContent();
+        }
+
+        function updateContent() {
+            const t = translations[currentLang];
+
+            // Static Text Updates
+            document.getElementById('nav-brand').textContent = t.brand;
+            document.getElementById('nav-home').textContent = t.home;
+            document.getElementById('nav-products').textContent = t.products;
+            document.getElementById('nav-inquiry').textContent = t.inquiry;
+            document.getElementById('mob-home').textContent = t.home;
+            document.getElementById('mob-products').textContent = t.products;
+            document.getElementById('mob-inquiry').textContent = t.inquiry;
+            
+            document.getElementById('lang-btn-text').textContent = t.langBtn;
+            document.getElementById('mobile-lang-btn').textContent = currentLang === 'hi' ? 'EN' : 'HI';
+
+            // Home
+            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+            document.getElementById('hero-btn-products').textContent = t.heroBtnProducts;
+            document.getElementById('hero-btn-call').textContent = t.heroBtnCall;
+            document.getElementById('cat-title').textContent = t.catTitle;
+            document.getElementById('cat-ac').textContent = t.catAc;
+            document.getElementById('cat-cooler').textContent = t.catCooler;
+            document.getElementById('cat-heater').textContent = t.catHeater;
+            document.getElementById('cat-geyser').textContent = t.catGeyser;
+            document.getElementById('cat-fan').textContent = t.catFan;
+
+            // Products Page
+            document.getElementById('prod-page-title').textContent = t.prodPageTitle;
+            document.getElementById('prod-custom-text').textContent = t.prodCustomText;
+            document.getElementById('prod-inquiry-btn').textContent = t.prodInquiryBtn;
+
+            // Inquiry Page
+            document.getElementById('inq-title').textContent = t.inqTitle;
+            document.getElementById('inq-desc').textContent = t.inqDesc;
+            document.getElementById('lbl-name').textContent = t.lblName;
+            document.getElementById('lbl-phone').textContent = t.lblPhone;
+            document.getElementById('lbl-prod').textContent = t.lblProd;
+            document.getElementById('lbl-msg').textContent = t.lblMsg;
+            document.getElementById('btn-submit').textContent = t.btnSubmit;
+            
+            document.getElementById('loc-title').textContent = t.locTitle;
+            document.getElementById('loc-btn').textContent = t.locBtn;
+
+            // Footer
+            document.getElementById('foot-brand').textContent = t.brand;
+            document.getElementById('foot-desc').textContent = t.heroSubtitle;
+            document.getElementById('foot-contact').textContent = t.footContact;
+            document.getElementById('foot-address').textContent = t.footAddress;
+            document.getElementById('shop-addr').textContent = t.shopAddr;
+            document.getElementById('copyright').textContent = t.copyright;
+
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = ''; // Clear existing
+
+            products.forEach(item => {
+                const name = currentLang === 'hi' ? item.nameHi : item.nameEn;
+                const price = currentLang === 'hi' ? item.priceHi : item.priceEn;
+                const desc = currentLang === 'hi' ? item.descHi : item.descEn;
+                const btnText = translations[currentLang].askWhatsapp;
+
+                const cardHtml = `
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-gray-100">
+                        <div class="h-48 bg-gray-200 relative">
+                            <img src="${item.img}" alt="${name}" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full uppercase font-bold tracking-wide">
+                                ${item.category}
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">${name}</h3>
+                            <p class="text-gray-600 text-sm mb-3">${desc}</p>
+                            <p class="text-blue-600 font-bold text-lg mb-4">${price}</p>
+                            <button onclick="handleProductInquiry('${name}')" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i> ${btnText}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+            
+            // Re-initialize icons for new elements
+            lucide.createIcons();
+        }
+
+        function handleProductInquiry(productName) {
+            const text = `Namaste Shree JI AirCon!%0AI am interested in: *${productName}*`;
+            window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+        }
+
+        function handleInquiry(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const product = document.getElementById('form-product').value;
+            const message = document.getElementById('form-message').value;
+
+            const text = `Namaste Shree JI AirCon!%0A*New Inquiry*%0AName: ${name}%0AProduct Interest: ${product}%0AMessage: ${message}`;
+            window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            lucide.createIcons();
+            document.getElementById('nav-home').classList.add('underline', 'underline-offset-4');
+        });
+
+    </script>
+</body>
+</html>
